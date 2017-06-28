@@ -21,8 +21,20 @@ exports["Can add new grade"] = function(test) {
 exports["Can average grades"] = function(test) {
     book.addGrade(100);
     book.addGrade(50);
-
     var average = book.getAverage();
     test.equal(average, 75);
+    test.done();
+};
+
+exports["Can get letter grade"] = function(test) {
+    book.addGrade(100);
+    book.addGrade(90);
+    var letterGrade = book.getLetterGrade();
+    test.equal(letterGrade, 'A');
+
+    book.reset();
+    book.addGrade(20);
+    var letterGrade = book.getLetterGrade();
+    test.equal(letterGrade, 'F');
     test.done();
 }
